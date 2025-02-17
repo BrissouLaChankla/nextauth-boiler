@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 Next.js 15 - Auth JWT (MongoDB + Server Actions + Cookies)
 
-## Getting Started
+Un **boilerplate simple et sécurisé** pour l'authentification avec **Next.js 15**, basé sur :
 
-First, run the development server:
+- 🔒 **JWT + Cookies HTTP-Only**
+- ⚡ **Server Actions** (pas besoin d'API Routes)
+- 🛡 **MongoDB + Mongoose** (gestion des utilisateurs)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 📦 Installation
+
+### 1️⃣ **Cloner le repo & installer les dépendances**
+
+```sh
+git clone https://github.com/ton-repo/next15-jwt-auth-boilerplate.git
+cd next15-jwt-auth-boilerplate
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ **Configurer `.env`**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```ini
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/dbname
+JWT_SECRET=super-secret-key
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3️⃣ **Lancer le projet**
 
-## Learn More
+```sh
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📌 Fonctionnement
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1️⃣ **Inscription / Connexion**
 
-## Deploy on Vercel
+- Le mot de passe est hashé avec **bcrypt**
+- Un **JWT est généré et stocké en cookie httpOnly**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2️⃣ **Accès aux pages protégées**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Vérification **côté serveur avant le rendu**
+- **Si non connecté → redirection vers `/login`**
+
+3️⃣ **Déconnexion**
+
+- Suppression du cookie JWT
+
+---
+
+## 📂 Structure du projet
+
+```
+app/
+│── (public)/          # Pages accessibles à tous (login, register)
+│── (protected)/       # Pages protégées (dashboard, profile)
+│   ├── layout.js      # Vérifie l'authentification avant d'afficher les pages
+│── actions/           # Server Actions (login, register, logout)
+│── lib/               # Connexion MongoDB, gestion des JWT
+│── models/            # Modèle utilisateur MongoDB
+│── middleware.js      # (Optionnel) Vérification d'authentification côté serveur
+```
+
+---
+
+## 🛠 Dépendances utilisées
+
+- **Next.js 15** - Framework React
+- **MongoDB + Mongoose** - Base de données NoSQL
+- **bcrypt** - Hashage des mots de passe
+- **jsonwebtoken** - Gestion des JWT
+
+---
+
+## 🚀 Améliorations possibles
+
+- 🔄 **Refresh Token**
+- 🏷 **Rôles utilisateur (admin, user, etc.)**
+- 📧 **Mot de passe oublié / réinitialisation**
+
+---
+
+**Fais-en ce que tu veux !** 🚀🔥
