@@ -13,8 +13,8 @@ Un **boilerplate simple et sécurisé** pour l'authentification avec **Next.js 1
 ### 1️⃣ **Cloner le repo & installer les dépendances**
 
 ```sh
-git clone https://github.com/ton-repo/next15-jwt-auth-boilerplate.git
-cd next15-jwt-auth-boilerplate
+git clone https://github.com/BrissouLaChankla/nextauth-boiler.git
+cd nextauth-boiler
 npm install
 ```
 
